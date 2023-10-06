@@ -6,24 +6,13 @@
 
 language: python
 
-addons:
-    apt:
-        sources:
-            - deadsnakes
-        packages:
-            - python2.4-dev
-            - python2.5-dev
-            - python2.6-dev
-            - python2.7-dev
+python:
+    - "3.8"
+    - "3.12"
 
 env:
     global:
         - BEANSTALKD=./beanstalkd
-    matrix:
-        - PYV=2.4 ST=https://raw.githubusercontent.com/pypa/setuptools/bootstrap-py24/ez_setup.py
-        - PYV=2.5 ST=https://raw.githubusercontent.com/pypa/setuptools/bootstrap-py24/ez_setup.py
-        - PYV=2.6 ST=https://bootstrap.pypa.io/ez_setup.py
-        - PYV=2.7 ST=https://bootstrap.pypa.io/ez_setup.py
 
 install:
     # Deactivate the virtualenv enabled by `language: python`.
@@ -48,4 +37,3 @@ script: nosetests-$PYV -c .nose.cfg
 branches:
     only:
         - master
-        - preflight
